@@ -5,18 +5,17 @@ library("SeuratDisk")
 library("SeuratWrappers")
 library("UCell")
 library("openxlsx")
-source("/home/projects/dtu_00062/people/camlem/atlas/integration_helper_fnc.R")
 
 # save date for file naming
 date <- format(Sys.time(), "%Y_%m_%d")
 
 # file paths
-file_path <- "/home/projects/dtu_00062/people/camlem/data/02_filtering/"
-out <- "/home/projects/dtu_00062/people/camlem/APC_scrnaseq/results"
+file_path <- "data/02_filtering/"
+out <- "results"
 dir.create(out)
 
 # loading metadata
-metadata <- readRDS("/home/projects/dtu_00062/people/camlem/APC_scrnaseq/metadata.rds")
+metadata <- readRDS("metadata.rds")
 
 # extracting sample names
 samples <- metadata$sample_ID
@@ -135,10 +134,9 @@ markers <- FindAllMarkers(merged_obj, only.pos = T, logfc.threshold = 0.25)
 markers <- markers %>%
   group_by(cluster) %>% top_n(n = 50, wt = avg_log2FC)
 
-write.xlsx(markers, "/home/projects/dtu_00062/people/camlem/APC_scrnaseq/cluster_markers_top50.xlsx")
+write.xlsx(markers, "cluster_markers_top50.xlsx")
 
-saveRDS(merged_obj, paste0("/home/projects/dtu_00062/people/camlem/APC_scrnaseq/", 
-                           date, "harmony_integrated_obj.rds", sep = ""))
+saveRDS(merged_obj, paste0(date, "harmony_integrated_obj.rds", sep = ""))
 
 
 ### subsetting to HLA high populations ###
@@ -227,10 +225,9 @@ markers <- FindAllMarkers(sub, only.pos = T, logfc.threshold = 0.25)
 markers <- markers %>%
   group_by(cluster) %>% top_n(n = 50, wt = avg_log2FC)
 
-write.xlsx(markers, "/home/projects/dtu_00062/people/camlem/APC_scrnaseq/sub_cluster_markers_top50.xlsx")
+write.xlsx(markers, "sub_cluster_markers_top50.xlsx")
 
-saveRDS(sub, paste0("/home/projects/dtu_00062/people/camlem/APC_scrnaseq/", 
-                           date, "_sub_harmony_integrated_obj.rds", sep = ""))
+saveRDS(sub, paste0(date, "_sub_harmony_integrated_obj.rds", sep = ""))
 
 
 
