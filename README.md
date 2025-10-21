@@ -5,4 +5,4 @@ Code accompanying "Unravelling the complexity of the intestinal mononuclear phag
 ## Structure
 
 - `original_submission/` - Code from original submission (Author: Line Wulff, https://github.com/LineWulff/FentonWulff_LP_MNP)
-- `revision/` - Code from revision (Author: Camilla Lemvigh)
+- `revision/` - Code from revision (Author: Camilla Lemvigh + Venla Väänänen)
