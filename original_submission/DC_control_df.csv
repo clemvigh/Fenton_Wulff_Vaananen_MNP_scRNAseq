@@ -1,0 +1,8 @@
+﻿parameter,value,alternative,comment
+Seurat_obj,R2_MNPs_DC_subs,NULL,the Seurat object which is to be analysed
+impute,FALSE,FALSE,whether you wish to impute or not
+save_imputation,FALSE,TRUE,whether you wish to save a copy of your Seurat object with the imputation as an assay
+magic_features,variable,ALL,features to impute - either all or variable
+pca_incl,15,60,"how many pcs are used in the imputation, should be adjusted to those used for clustering etc."
+run_tspace,TRUE,FALSE,whether you wish to run trajcetory analysis on the object
+tspace_features,pca,variable,choice of running tspace on variable genes or pcs
